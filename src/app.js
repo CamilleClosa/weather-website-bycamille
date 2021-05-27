@@ -1,11 +1,12 @@
 const path = require("path");
 const express = require("express"); //express is function
-const app = express(); //create variable to store express application
-//it doesnt need any argument
-
 const geocode = require("./utils/geocode");
 
 const forecast = require("./utils/forecast");
+
+const app = express(); //create variable to store express application
+//it doesnt need any argument
+const port = process.env.PORT || 3000;
 
 /*
 //app.com
@@ -178,10 +179,6 @@ app.get("/products", (req, res) => {
   });
 }); //query ?search=games&rating=5
 
-app.listen(3000, () => {
-  console.log("Server is up on port 3000 ");
-});
-
 //****** Dynamic Pages with Templating
 //template engine is used to render dynamic webpages using express
 //handle bars - a template engine that is use to allow render dynamic docu and easily create code that we can use
@@ -298,3 +295,7 @@ app.get("*", (req, res) => {
 //app.get("*", (req, res) => {
 //  res.send("My 404 Page");
 //}); //must be the last app.get
+
+app.listen(port, () => {
+  console.log("Server is up on port" + port);
+});

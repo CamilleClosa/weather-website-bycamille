@@ -54,16 +54,14 @@ weatherForm.addEventListener("submit", (e) => {
   //migrate fetch call into the sumbit callback
   //use the search text as the address query string value
   //submit the form with a valid and invalid value test
-  fetch("http://localhost:3000/weather?address=" + location).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          p1.textContent = data.error;
-        } else {
-          p1.textContent = data.location;
-          p2.textContent = data.forecast;
-        }
-      });
-    }
-  );
+  fetch("/weather?address=" + location).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        p1.textContent = data.error;
+      } else {
+        p1.textContent = data.location;
+        p2.textContent = data.forecast;
+      }
+    });
+  });
 });
